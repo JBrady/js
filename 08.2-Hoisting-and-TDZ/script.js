@@ -89,23 +89,23 @@ f() */
 
 // var firstName = 'John'
 
-const jonas = {
+/* const jonas = {
   firstName: 'Jonas',
   year: 1991,
   calcAge: function () {
     // console.log(this)
-    console.log(2037 - this.year)
+    console.log(2037 - this.year) */
 
-    // Solution 1
-    /*     const self = this // self or that
+// Solution 1
+/*     const self = this // self or that
     const isMillenial = function () {
       console.log(self)
       console.log(self.year >= 1981 && self.year <= 1996)
       //   console.log(this.year >= 1981 && this.year <= 1996)
     } */
 
-    // Solution 2
-    const isMillenial = () => {
+// Solution 2
+/*     const isMillenial = () => {
       console.log(this)
       console.log(this.year >= 1981 && this.year <= 1996)
     }
@@ -119,10 +119,10 @@ const jonas = {
   },
 }
 jonas.greet()
-jonas.calcAge()
+jonas.calcAge() */
 
 // Arguments keyword
-const addExpr = function (a, b) {
+/* const addExpr = function (a, b) {
   console.log(arguments)
   return a + b
 }
@@ -132,4 +132,56 @@ var addArrow = (a, b) => {
   console.log(arguments)
   return a + b
 }
-addArrow(2, 5, 8)
+addArrow(2, 5, 8) */
+
+// Primitives vs Objects
+/* let age = 30
+let oldAge = age
+age = 31
+console.log(age)
+console.log(oldAge)
+
+const me = {
+  name: 'Jonas',
+  age: 30,
+}
+const friend = me
+friend.age = 27
+console.log('Friend:', friend)
+console.log('Me:', me) */
+
+// Primitive types
+let lastName = 'Williams'
+let oldLastName = lastName
+lastName = 'Davis'
+console.log(lastName, oldLastName)
+
+// Reference types
+const jessica = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+}
+const marriedJessica = jessica
+marriedJessica.lastName = 'Davis'
+console.log('Before marrige:', jessica)
+console.log('After marrige:', marriedJessica)
+
+// marriedJessica = {}
+
+// Copying objects
+const jessica2 = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+  family: ['Alice', 'Bob'],
+}
+
+const jessicaCopy = Object.assign({}, jessica2)
+jessicaCopy.lastName = 'Davis'
+
+jessicaCopy.family.push('Mary')
+jessicaCopy.family.push('John')
+
+console.log('Before marrige:', jessica2)
+console.log('After marrige:', jessicaCopy)
