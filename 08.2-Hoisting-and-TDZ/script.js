@@ -31,7 +31,7 @@ const addExpr = function (a, b) {
 }
 var addArrow = (a, b) => a + b */
 
-// Example
+/* // Example
 console.log(undefined)
 if (!numProducts) deleteShoppingCart()
 
@@ -47,4 +47,42 @@ const z = 3
 
 console.log(x === window.x)
 console.log(y === window.y)
-console.log(z === window.z)
+console.log(z === window.z) */
+
+// THIS keyword
+console.log(this)
+
+// Function expression
+const calcAge = function (birthYear) {
+  console.log(2037 - birthYear)
+  console.log(this)
+}
+calcAge(1991)
+
+// Arrow function
+const calcAgeArrow = (birthYear) => {
+  console.log(2037 - birthYear)
+  console.log(this)
+}
+calcAgeArrow(1980)
+
+// Method
+const jonas = {
+  year: 1991,
+  calcAge: function () {
+    console.log(this)
+    console.log(2037 - this.year)
+  },
+}
+jonas.calcAge()
+
+const matilda = {
+  year: 2017,
+}
+
+// Method borrowing
+matilda.calcAge = jonas.calcAge
+matilda.calcAge()
+
+const f = jonas.calcAge
+f()
