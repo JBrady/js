@@ -46,12 +46,54 @@ const restaurant = {
       `Here is your delicious pasta with ${ing1}, ${ing2}, and ${ing3}`
     )
   },
+
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient)
+    console.log(otherIngredients)
+  },
 }
 
+// 1) Destructuring
+
+// SPREAD, because its on the right-hand side of the assignment operator ( = )
+const arr = [1, 2, ...[3, 4]]
+
+// REST, because its on the left side of the assignment aoperator ( = )
+const [a, b, ...others] = [1, 2, 3, 4, 5]
+console.log(a, b, others)
+
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+]
+console.log(pizza, risotto, otherFood)
+
+// Objects
+const { sat, ...weekdays } = restaurant.openingHours
+console.log(weekdays)
+
+// 2) Functions
+const add = function (...numbers) {
+  let sum = 0
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i]
+  console.log(sum)
+}
+add(2, 3)
+add(5, 3, 7, 2)
+add(8, 2, 5, 3, 2, 1, 4)
+
+const x = [23, 5, 7]
+add(...x)
+
+restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach')
+restaurant.orderPizza('mushrooms')
+
+/* 
 ////////////////////////////
-// Spread operator
+// Spread operator (...)
 // We can only use the spread operator in places were we would otherwise write values separated by commas
 // Works on all 'iterables'
+// Two use cases of the spread operator are to build new arrays, or to pass multiple values into a function
 // We can only use the spread operator when building an array, or when we pass values into a function
 const arr = [7, 8, 9]
 const badNewArray = [1, 2, arr[0], arr[1], arr[2]]
@@ -98,7 +140,7 @@ console.log(newRestaurant)
 const restaurantCopy = { ...restaurant }
 restaurantCopy.name = 'Ristorante Roma'
 console.log(restaurantCopy.name)
-console.log(restaurant.name)
+console.log(restaurant.name) */
 
 /* 
 ///////////////////////////////////////////
