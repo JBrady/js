@@ -40,46 +40,65 @@ const restaurant = {
       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     )
   },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2}, and ${ing3}`
+    )
+  },
 }
 
-restaurant.orderDelivery({
-  time: '23:30',
-  address: 'Via Del Sole 21',
-  mainIndex: 2,
-  starterIndex: 2,
-})
+////////////////////////////
+// Spread operator
+// We can only use the spread operator in places were we would otherwise write values separated by commas
+// Works on all 'iterables'
+// We can only use the spread operator when building an array, or when we pass values into a function
+const arr = [7, 8, 9]
+const badNewArray = [1, 2, arr[0], arr[1], arr[2]]
+console.log(badNewArray)
 
-restaurant.orderDelivery({
-  address: 'Via Del Sole 21',
-  starterIndex: 1,
-})
+const newArr = [1, 2, ...arr]
+console.log(newArr)
+console.log(...newArr)
 
-const { name, openingHours, categories } = restaurant
-console.log(name, openingHours, categories)
+const newMenu = [...restaurant.mainMenu, 'Gnocci']
+console.log(newMenu)
+console.log(...newMenu)
 
-const {
-  name: restaurantName,
-  openingHours: hours,
-  categories: tags,
-} = restaurant
-console.log(restaurantName, hours, tags)
+// Shallow copy of an array
+const mainMenuCopy = [...restaurant.mainMenu]
 
-// Setting a default value
-const { menu = [], starterMenu: starters = [] } = restaurant
-console.log(menu, starters)
+// Join 2 or more arrays
+const menu = [...restaurant.mainMenu, ...restaurant.starterMenu]
+console.log(menu)
 
-// Mutating variables
-let a = 111
-let b = 999
-const obj = { a: 23, b: 7, c: 14 }
-;({ a, b } = obj)
-console.log(a, b)
+// Iterables are arrays, strings, maps, sets. But NOT objects
+const str = 'Jonas'
+const letters = [...str, ' ', 'S.']
+console.log(letters)
+console.log(...str)
+console.log(...letters)
 
-// Nested Objects
-const {
-  fri: { open: o, close: c },
-} = openingHours
-console.log(o, c)
+// Real world example
+// const ingredients = [
+//   prompt("Let's make pasta! Ingredient 1?"),
+//   prompt("Let's make pasta! Ingredient 2?"),
+//   prompt("Let's make pasta! Ingredient 3?"),
+// ]
+// console.log(ingredients)
+
+// restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2])
+// restaurant.orderPasta(...ingredients)
+
+// Since ES2018, the spread operator now works with objects (even though objects are not iterables)...
+const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Guiseppe' }
+console.log(newRestaurant)
+
+// Shallow copy of an object
+const restaurantCopy = { ...restaurant }
+restaurantCopy.name = 'Ristorante Roma'
+console.log(restaurantCopy.name)
+console.log(restaurant.name)
 
 /* 
 ///////////////////////////////////////////
@@ -118,3 +137,43 @@ console.log(i, j, k)
 const [p = 1, q = 1, r = 1] = [8, 9]
 console.log(p, q, r) 
 */
+
+/* restaurant.orderDelivery({
+  time: '23:30',
+  address: 'Via Del Sole 21',
+  mainIndex: 2,
+  starterIndex: 2,
+})
+
+restaurant.orderDelivery({
+  address: 'Via Del Sole 21',
+  starterIndex: 1,
+})
+
+const { name, openingHours, categories } = restaurant
+console.log(name, openingHours, categories)
+
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant
+console.log(restaurantName, hours, tags)
+
+// Setting a default value
+const { menu = [], starterMenu: starters = [] } = restaurant
+console.log(menu, starters)
+
+// Mutating variables
+let a = 111
+let b = 999
+const obj = { a: 23, b: 7, c: 14 }
+;({ a, b } = obj)
+console.log(a, b)
+
+// Nested Objects
+const {
+  fri: { open: o, close: c },
+} = openingHours
+console.log(o, c)
+ */
