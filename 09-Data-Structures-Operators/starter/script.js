@@ -53,6 +53,35 @@ const restaurant = {
   },
 }
 
+// The for-of loop
+// ...the old way
+console.log('---- The Old Way -----')
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu]
+for (let i = 0; i < menu.length; i++) {
+  console.log(menu[i])
+}
+
+// ...the new way
+// Prints the current element
+console.log('---- The New Way (for-of loop)-----')
+for (const item of menu) console.log(item)
+
+// Prints the current index and the current element
+for (const item of menu.entries()) {
+  // console.log(item)
+  // A nicer way of laying out the information
+  console.log(`${item[0] + 1}: ${item[1]}`)
+}
+
+// ...the new way, destructured
+// Use the destructuring assignment ([]), and create the two variables that we want (item and element)
+for (const [item, element] of menu.entries()) {
+  console.log(`${item + 1}: ${element}`)
+}
+
+// The entries method creates an array with a new array in each position containing the element and index position
+// console.log([...menu.entries()])
+
 /* 
 // Logical Assignment Operators
 const rest1 = {
@@ -320,7 +349,7 @@ TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Th
 GOOD LUCK 😀
 */
 
-const game = {
+/* const game = {
   team1: 'Bayern Munich',
   team2: 'Borrussia Dortmund',
   players: [
@@ -393,4 +422,4 @@ printGoals(...game.scored)
 
 // 7.
 team1 < team2 && console.log('Team 1 is more likely to win')
-team1 > team2 && console.log('Team 2 is more likely to win')
+team1 > team2 && console.log('Team 2 is more likely to win') */
